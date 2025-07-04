@@ -140,6 +140,10 @@ data/
 *.parquet
 *.feather
 
+# Allow essential metadata files for reproducibility
+!seer_metadata.json
+!*_metadata.json
+
 # Model files
 models/
 *.model

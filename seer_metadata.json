@@ -1,0 +1,44 @@
+{
+    "METADATA_SPEC_VERSION": "SINGLE_TABLE_V1",
+    "columns": {
+        "Age recode with <1 year olds": {
+            "sdtype": "numerical"
+        },
+        "Race recode (White, Black, Other)": {
+            "sdtype": "categorical"
+        },
+        "Sex": {
+            "sdtype": "categorical"
+        },
+        "Year of diagnosis": {
+            "sdtype": "numerical"
+        },
+        "ICD-O-3 Hist/behav": {
+            "sdtype": "categorical"
+        },
+        "Primary Site - labeled": {
+            "sdtype": "categorical"
+        },
+        "RX Summ--Surg/Rad Seq": {
+            "sdtype": "categorical"
+        },
+        "Reason no cancer-directed surgery": {
+            "sdtype": "categorical"
+        },
+        "Radiation recode": {
+            "sdtype": "categorical"
+        },
+        "Chemotherapy recode": {
+            "sdtype": "categorical"
+        },
+        "Survival months": {
+            "sdtype": "numerical"
+        },
+        "SEER cause-specific death classification": {
+            "sdtype": "categorical"
+        },
+        "Cause of death to site recode": {
+            "sdtype": "categorical"
+        }
+    }
+}
