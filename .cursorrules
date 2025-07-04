@@ -1,0 +1,254 @@
+# O2TAB-GAN Project Cursor Rules
+# Author: Dr. Ehsan Pendar
+# Date: December 29, 2024
+
+## AUTHORSHIP REQUIREMENTS
+# All generated code files must include the following header:
+# """
+# O2TAB-GAN: Orthopaedic Oncology Tabular GAN
+# Author: Dr. Ehsan Pendar
+# Date: [Current Date]
+# Description: [Brief description of the file's purpose]
+# """
+
+## GENERAL CODING STANDARDS
+
+### Python Style Guide
+- Follow PEP 8 style guidelines
+- Use type hints for all function parameters and return values
+- Maximum line length: 100 characters
+- Use descriptive variable names (avoid single letters except for loop counters)
+- Add docstrings to all classes and functions using Google style
+
+### Code Quality
+- Always include error handling with try-except blocks for file operations
+- Use logging instead of print statements for debugging
+- Include input validation for all functions
+- Write unit tests for all utility functions
+- Use constants for magic numbers and configuration values
+
+### Documentation
+- Every file must have a module-level docstring
+- All classes and functions must have descriptive docstrings
+- Include examples in docstrings when appropriate
+- Add inline comments for complex logic
+
+## MACHINE LEARNING SPECIFIC RULES
+
+### Model Development
+- Always set random seeds for reproducibility (torch.manual_seed, np.random.seed, random.seed)
+- Use device-agnostic code (check for CUDA availability)
+- Implement proper gradient clipping for GAN training
+- Add model checkpointing and resume functionality
+- Use mixed precision training when possible (torch.cuda.amp)
+
+### Data Handling
+- Never commit actual dataset files to version control
+- Use relative paths for data loading
+- Implement data validation and sanity checks
+- Handle missing values explicitly
+- Add data preprocessing pipelines with clear documentation
+
+### Experiment Tracking
+- Log all hyperparameters to Weights & Biases
+- Save model configurations alongside weights
+- Track both training and validation metrics
+- Include data version information in experiment logs
+- Use structured logging with clear metric names
+
+### Privacy and Security
+- Never log sensitive patient information
+- Implement differential privacy when specified
+- Use secure random number generation for privacy-critical operations
+- Add anonymization checks for any data outputs
+- Include privacy risk assessment in evaluation pipelines
+
+## PYTORCH SPECIFIC RULES
+
+### Model Architecture
+- Use nn.Module for all custom layers and models
+- Implement proper forward() methods with clear tensor shapes
+- Use nn.Parameter for learnable parameters
+- Add proper device placement (.to(device))
+- Include model summary functionality
+
+### Training Loops
+- Use torch.no_grad() for inference and evaluation
+- Implement proper optimizer.zero_grad() placement
+- Add gradient norm monitoring
+- Use appropriate loss functions and metrics
+- Include learning rate scheduling
+
+### Memory Management
+- Use torch.cuda.empty_cache() when appropriate
+- Implement batch processing for large datasets
+- Add memory usage monitoring
+- Use gradient accumulation for large batch sizes
+- Include CUDA memory profiling in debug mode
+
+## GAN SPECIFIC RULES
+
+### Architecture Design
+- Implement proper discriminator and generator architectures
+- Use appropriate activation functions (LeakyReLU for discriminator, Tanh for generator output)
+- Add spectral normalization when specified
+- Implement proper batch normalization placement
+- Use progressive growing techniques when applicable
+
+### Training Dynamics
+- Monitor discriminator vs generator loss balance
+- Implement proper WGAN-GP gradient penalty
+- Add mode collapse detection and mitigation
+- Use proper learning rate ratios for D and G
+- Include training stability metrics
+
+### Evaluation
+- Implement Inception Score and FID calculations
+- Add statistical similarity metrics (SDV)
+- Include downstream task evaluation (TSTR)
+- Monitor diversity metrics
+- Add privacy attack implementations
+
+## PROJECT STRUCTURE RULES
+
+### File Organization
+- Use clear directory structure: src/, data/, experiments/, notebooks/, scripts/
+- Keep configuration files in dedicated config/ directory
+- Store utilities in utils/ module
+- Separate model definitions from training scripts
+- Use consistent naming conventions
+
+### Version Control
+- Commit frequently with descriptive messages
+- Use feature branches for major changes
+- Include .gitignore for Python, PyTorch, and data files
+- Tag releases with semantic versioning
+- Include detailed commit messages for hyperparameter changes
+
+### Environment Management
+- Use conda environment.yml for dependency management
+- Pin specific versions for reproducibility
+- Include CUDA version requirements
+- Document system requirements clearly
+- Test environment setup on clean systems
+
+## OPTUNA HYPERPARAMETER OPTIMIZATION
+
+### Study Design
+- Define clear objective functions with proper metrics
+- Implement pruning for early stopping of poor trials
+- Use appropriate samplers (TPE for continuous, Random for discrete)
+- Include hyperparameter space documentation
+- Add study resumption capabilities
+
+### Trial Management
+- Log all trial parameters and results
+- Implement proper exception handling in objective functions
+- Use study storage for persistence
+- Include trial visualization utilities
+- Add best trial selection and model loading
+
+## EVALUATION AND BENCHMARKING
+
+### Metrics Implementation
+- Use standardized evaluation protocols
+- Implement confidence intervals for metrics
+- Add statistical significance testing
+- Include baseline comparisons
+- Document evaluation methodology clearly
+
+### Privacy Assessment
+- Implement membership inference attacks
+- Add attribute inference attack evaluations
+- Include differential privacy budget tracking
+- Monitor privacy-utility tradeoffs
+- Document privacy guarantees clearly
+
+## DEPLOYMENT AND REPRODUCIBILITY
+
+### Model Packaging
+- Include model serialization and loading utilities
+- Add inference pipeline with proper preprocessing
+- Include model versioning and metadata
+- Implement batch inference capabilities
+- Add model validation checks
+
+### Reproducibility
+- Include exact dependency versions
+- Document hardware requirements
+- Provide complete training commands
+- Include data preprocessing steps
+- Add result validation scripts
+
+## ERROR HANDLING AND LOGGING
+
+### Exception Management
+- Use specific exception types
+- Include informative error messages
+- Add recovery mechanisms when possible
+- Log errors with appropriate levels
+- Include debugging information
+
+### Logging Strategy
+- Use structured logging with JSON format
+- Include timestamp and source information
+- Add different log levels (DEBUG, INFO, WARNING, ERROR)
+- Implement log rotation
+- Include experiment context in logs
+
+## TESTING AND VALIDATION
+
+### Unit Testing
+- Write tests for all utility functions
+- Include edge case testing
+- Add integration tests for model components
+- Test with mock data when appropriate
+- Include performance regression tests
+
+### Model Validation
+- Implement cross-validation protocols
+- Add model performance monitoring
+- Include fairness and bias testing
+- Test on multiple datasets when possible
+- Add model interpretability tools
+
+## COLLABORATION AND DOCUMENTATION
+
+### Code Reviews
+- Include peer review for major changes
+- Document design decisions
+- Add architectural decision records
+- Include performance benchmarks
+- Review security implications
+
+### Documentation
+- Maintain up-to-date README files
+- Include API documentation
+- Add usage examples and tutorials
+- Document known limitations
+- Include troubleshooting guides
+
+## SPECIFIC O2TAB-GAN RULES
+
+### Architecture Components
+- Implement FT-Transformer with proper attention mechanisms
+- Add Fourier feature networks for numerical data
+- Include WGAN-GP with gradient penalty
+- Implement PacGAN conditioning properly
+- Add proper categorical embedding handling
+
+### Dataset Handling
+- Use SDV metadata schema for SEER dataset
+- Implement proper high-cardinality categorical handling
+- Add survival analysis specific preprocessing
+- Include medical data validation
+- Implement proper train/validation/test splits
+
+### Evaluation Protocols
+- Include SDV quality metrics
+- Add survival model evaluation (C-index)
+- Implement privacy attack evaluations
+- Include comparative analysis with baselines
+- Add clinical utility assessment
+
+These rules ensure high-quality, reproducible, and professional machine learning code development for the O2TAB-GAN project while maintaining proper attribution and documentation standards. 
